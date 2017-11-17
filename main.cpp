@@ -510,7 +510,7 @@ WinMain (HINSTANCE hInstance,
         		glTranslatef (0.0f, -2.8f, -6.7f);
                 glScalef(1.7f, 0.2f, 1.0f);
 				glRotatef (43, 0, 1, 0);
-        		       		
+        		       	
         		kubusNormal();
         	glPopMatrix();
         	
