@@ -100,7 +100,7 @@ int LoadGLTextures()									// fungsi menampilkan gambar dan  Convert ke Textur
 	{
 		Status=TRUE;									
 
-		glGenTextures(1, &texture[2]);					
+		glGenTextures(1, &texture[3]);					
 
 		// Typical Texture Generation Using Data From The Bitmap
 		glBindTexture(GL_TEXTURE_2D, texture[3]);
