@@ -629,8 +629,8 @@ WinMain (HINSTANCE hInstance,
            		
         	glPushMatrix( );
                 
-                glTranslatef (0.0f, 2.2f, -8.0f);
-				glScalef(0.2f, 0.2f, 0.f);
+                glTranslatef (0.0f, 2.0f, -8.0f);
+				glScalef(0.4f, 0.4f, 0.f);
         		//glRotatef(180,1.0f,0.0f,0.0f);
                 //glRotatef(zrot,0.0f,0.0f,1.0f);
         		kubusJamTekstur();
