@@ -53,7 +53,7 @@ int LoadGLTextures()									// fungsi menampilkan gambar dan  Convert ke Textur
 {
 	int Status=FALSE;									
 
-	AUX_RGBImageRec *TextureImage[3];				// membuat temporary untuk menyimpan gambar
+	AUX_RGBImageRec *TextureImage[10];				// membuat temporary untuk menyimpan gambar
 
 	memset(TextureImage,0,sizeof(void *)*1);           	
 
@@ -144,6 +144,19 @@ int LoadGLTextures()									// fungsi menampilkan gambar dan  Convert ke Textur
 		// Typical Texture Generation Using Data From The Bitmap
 		glBindTexture(GL_TEXTURE_2D, texture[6]);
 		glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage[6]->sizeX, TextureImage[6]->sizeY, 0, GL_RGB, GL_UNSIGNED_BYTE, TextureImage[6]->data);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+	}
+	
+	if (TextureImage[7]=LoadBMP("Kelompok.bmp"))  //pengambilan data gambar untuk dinding kiri
+	{
+		Status=TRUE;									
+
+		glGenTextures(1, &texture[7]);					
+
+		// Typical Texture Generation Using Data From The Bitmap
+		glBindTexture(GL_TEXTURE_2D, texture[7]);
+		glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage[7]->sizeX, TextureImage[7]->sizeY, 0, GL_RGB, GL_UNSIGNED_BYTE, TextureImage[7]->data);
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 	}
@@ -546,6 +559,22 @@ void kubusAcTekstur()
         // Akhir kode yang diambil dari bukunya Suyoto
         //******************************************************
 }
+
+void FotoKelompokKanan()
+{
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[7]); //menampilkan citra 
+	glBegin(GL_QUADS);
+	    // Muka belakang		
+        glNormal3f( 0.0f, 0.0f, 1.0f);		// Normal menuju Anda (berarah menuju ruangan)
+        glTexCoord2f(0.0f, 0.0f);	glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (belakang)
+        glTexCoord2f(0.0f, 1.0f);	glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 2 (belakang)
+        glTexCoord2f(1.0f, 1.0f);	glVertex3f(1.0f,  1.0f, -1.0f);		// Titik 3 (belakang)
+        glTexCoord2f(1.0f, 0.0f);	glVertex3f(1.0f, -1.0f, -1.0f);		// Titik 4 (belakang)
+   	glEnd();
+   	glDisable(GL_TEXTURE_2D);
+}
+
 //******************************************************
 // Awal kode yang diambil dari bukunya Suyoto
 void Inisialisasi(int lebar, int tinggi)
@@ -806,6 +835,13 @@ WinMain (HINSTANCE hInstance,
         		kubusAcTekstur();
         	glPopMatrix( );
         	
+        	//FOTO BELAKANG
+        	glPushMatrix();
+	        		glTranslated(0.0f, 0.0f, -10.0f);
+					glScalef(8.0f, 4.0f, 5.0f);
+					FotoKelompokKanan();
+			glPopMatrix();
+				
         	xrot+=0.3f;   //Mengatur arah putaran object
 	        yrot+=0.2f;   //Mengatur arah putaran object
 	        zrot+=0.4f;   //Mengatur arah putaran object
