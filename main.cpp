@@ -53,7 +53,7 @@ int LoadGLTextures()									// fungsi menampilkan gambar dan  Convert ke Textur
 {
 	int Status=FALSE;									
 
-	AUX_RGBImageRec *TextureImage[2];					// membuat temporary untuk menyimpan gambar
+	AUX_RGBImageRec *TextureImage[3];				// membuat temporary untuk menyimpan gambar
 
 	memset(TextureImage,0,sizeof(void *)*1);           	
 
@@ -82,7 +82,19 @@ int LoadGLTextures()									// fungsi menampilkan gambar dan  Convert ke Textur
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 	}
+	
+	if (TextureImage[2]=LoadBMP("ac.bmp"))  //pengambilan data gambar (256X256)
+	{
+		Status=TRUE;									
 
+		glGenTextures(1, &texture[2]);					
+
+		// Typical Texture Generation Using Data From The Bitmap
+		glBindTexture(GL_TEXTURE_2D, texture[2]);
+		glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage[2]->sizeX, TextureImage[2]->sizeY, 0, GL_RGB, GL_UNSIGNED_BYTE, TextureImage[2]->data);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+	}
 }
 
 void kubusNormal()	{
@@ -402,6 +414,86 @@ void kubusJamTekstur()
         // Akhir kode yang diambil dari bukunya Suyoto
         //******************************************************
 }
+void kubusAcTekstur()
+{   	
+        glBindTexture(GL_TEXTURE_2D, texture[2]); //menampilkan citra
+        glEnable(GL_TEXTURE_2D);
+        glBegin(GL_QUADS);
+        // Muka kanan
+    	glNormal3f( 1.0f, 0.0f, 0.0f);		// Normal berarah ke kanan
+    	glTexCoord2f(1.0f, 0.0f);
+    	glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 1 (kanan)
+    	glTexCoord2f(1.0f, 1.0f);
+    	glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 2 (kanan)
+    	glTexCoord2f(0.0f, 1.0f);
+    	glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (kanan)
+    	glTexCoord2f(0.0f, 0.0f);
+        glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 4 (kanan)
+		glEnd();
+	    glDisable(GL_TEXTURE_2D);
+    	
+        glBegin(GL_QUADS);
+        
+        // Muka depan
+        glNormal3f( 0.0f, 0.0f, 1.0f);		// Normal menuju Anda
+        glTexCoord2f(0.0f, 0.0f); 
+        glVertex3f(-1.0f, -1.0f,  1.0f);	// Titik 1 (depan)
+        glTexCoord2f(1.0f, 0.0f); 
+        glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 2 (depan)
+        glTexCoord2f(1.0f, 1.0f);
+        glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (depan)
+        glTexCoord2f(0.0f, 1.0f);
+        glVertex3f(-1.0f,  1.0f,  1.0f);	// Titik 4 (depan)
+	    
+	
+        // Muka belakang		
+       	glNormal3f( 0.0f, 0.0f,-1.0f);		// Normal meninggalKan Anda
+       	glTexCoord2f(1.0f, 0.0f);
+       	glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (belakang)
+       	glTexCoord2f(1.0f, 1.0f);
+       	glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 2 (belakang)
+       	glTexCoord2f(0.0f, 1.0f);
+       	glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 3 (belakang)
+       	glTexCoord2f(0.0f, 0.0f);
+       	glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 4 (belakang)
+	
+	    // Muka Atas	
+	    glNormal3f( 0.0f, 1.0f, 0.0f);		// Normal berarah atas
+	    glTexCoord2f(0.0f, 1.0f);
+	    glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 1 (atas)
+	    glTexCoord2f(0.0f, 0.0f);
+	    glVertex3f(-1.0f,  1.0f,  1.0f);	// Titik 2 (atas)
+	    glTexCoord2f(1.0f, 0.0f);
+	    glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (atas)
+	    glTexCoord2f(1.0f, 1.0f);
+	    glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 4 (atas)
+	
+	    // Muka bawah
+	    glNormal3f( 0.0f,-1.0f, 0.0f);		// Normal berarah bawah
+	    glTexCoord2f(1.0f, 1.0f);
+	    glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (bawah)
+	    glTexCoord2f(0.0f, 1.0f);
+	    glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 2 (bawah)
+	    glTexCoord2f(0.0f, 0.0f);
+	    glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 3 (bawah)
+	    glTexCoord2f(1.0f, 0.0f);
+	    glVertex3f(-1.0f, -1.0f,  1.0f);	// Titik 4 (bawah)
+   	
+	    // Muka kiri
+	    glNormal3f(-1.0f, 0.0f, 0.0f);		// Normal berarah ke kiri
+	    glTexCoord2f(0.0f, 0.0f);
+	    glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (kiri)
+	    glTexCoord2f(1.0f, 0.0f);
+	    glVertex3f(-1.0f, -1.0f,  1.0f);	// Titik 2 (kiri)
+	    glTexCoord2f(1.0f, 1.0f);
+	    glVertex3f(-1.0f,  1.0f,  1.0f);	// Titik 3 (kiri)
+	    glTexCoord2f(0.0f, 1.0f);
+	    glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 4 (kiri)
+	
+	    glEnd();
+        // Akhir kode yang diambil dari bukunya Suyoto
+        //******************************************************
+}
 //******************************************************
 // Awal kode yang diambil dari bukunya Suyoto
 void Inisialisasi(int lebar, int tinggi)
@@ -629,12 +721,37 @@ WinMain (HINSTANCE hInstance,
            		
         	glPushMatrix( );
                 
-                glTranslatef (0.0f, 2.0f, -8.0f);
-				glScalef(0.4f, 0.4f, 0.f);
+                glTranslatef (0.0f, 3.5f, -14.99f);
+				glScalef(0.7f, 0.7f, 0.f);
         		//glRotatef(180,1.0f,0.0f,0.0f);
                 //glRotatef(zrot,0.0f,0.0f,1.0f);
         		kubusJamTekstur();
-        		
+        	glPopMatrix( );
+        	
+        	//AC 1
+        	glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient3);
+            glMaterialfv(GL_FRONT, GL_DIFFUSE, bahan_diffuse3);
+            glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular3);
+           	glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess3);
+           	
+        	glPushMatrix( );
+                glTranslatef (-5.95f, 3.0f, -11.0f);
+				glScalef(0.4f, 0.7f, 2.3f);
+				glRotatef (0.0f, 0.0f, 1.0f, 0.0f);
+        		kubusAcTekstur();
+        	glPopMatrix( );
+        	
+        	//AC 2
+        	glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient3);
+            glMaterialfv(GL_FRONT, GL_DIFFUSE, bahan_diffuse3);
+            glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular3);
+           	glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess3);
+           	
+        	glPushMatrix( );
+                glTranslatef (5.95f, 3.0f, -11.0f);
+				glScalef(0.4f, 0.7f, 2.3f);
+				glRotatef (180.0f, 0.0f, 1.0f, 0.0f);
+        		kubusAcTekstur();
         	glPopMatrix( );
         	
         	xrot+=0.3f;   //Mengatur arah putaran object
