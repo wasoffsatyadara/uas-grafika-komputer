@@ -549,6 +549,99 @@ void kubusAcTekstur()
         // Akhir kode yang diambil dari bukunya Suyoto
         //******************************************************
 }
+
+void lemari()	{
+	
+    // Untuk bahan objek kubus sisi belakang
+    GLfloat bahan_ambient0[]= {1.0f, 0.77f, 0.3f, 0.8f};
+	GLfloat bahan_diffuse0[] = {1.0f, 0.7f, 0.3f, 0.8f};
+	GLfloat bahan_specular0[] = {1.0f, 0.7f, 0.3f, 0.8f};
+	GLfloat bahan_shininess0[] = {10.0f};
+    // Untuk bahan objek kubus sisi kiri
+    GLfloat bahan_ambient1[]= {1.0f, 0.77f, 0.3f, 0.8f};
+	GLfloat bahan_diffuse1[] = {1.0f, 0.7f, 0.3f, 0.8f};
+	GLfloat bahan_specular1[] = {1.0f, 0.7f, 0.3f, 0.8f};
+	GLfloat bahan_shininess1[] = {10.0f};
+    // Untuk bahan objek kubus sisi kanan
+    GLfloat bahan_ambient2[]= {1.0f, 0.77f, 0.3f, 0.8f};
+	GLfloat bahan_diffuse2[] = {1.0f, 0.7f, 0.3f, 0.8f};
+	GLfloat bahan_specular2[] = {1.0f, 0.7f, 0.3f, 0.8f};
+	GLfloat bahan_shininess2[] = {10.0f};
+    // Untuk bahan objek kubus sisi atas
+    GLfloat bahan_ambient3[]= {1.0f, 0.77f, 0.3f, 0.8f};
+	GLfloat bahan_diffuse3[] = {1.0f, 0.7f, 0.3f, 0.8f};
+	GLfloat bahan_specular3[] = {1.0f, 0.7f, 0.3f, 0.8f};
+	GLfloat bahan_shininess3[] = {10.0f};
+	glBegin(GL_QUADS);        
+		glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient0);
+        glMaterialfv(GL_FRONT, GL_DIFFUSE, bahan_diffuse0);
+        glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular0);
+        glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess0);
+        // Muka belakang		
+       	glNormal3f( 0.0f, 0.0f,-1.0f);		// Normal meninggalKan Anda
+       	glTexCoord2f(1.0f, 0.0f);
+       	glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (belakang)
+       	glTexCoord2f(1.0f, 1.0f);
+       	glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 2 (belakang)
+       	glTexCoord2f(0.0f, 1.0f);
+       	glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 3 (belakang)
+       	glTexCoord2f(0.0f, 0.0f);
+       	glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 4 (belakang)
+	
+		glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient1);
+        glMaterialfv(GL_FRONT, GL_DIFFUSE, bahan_diffuse1);
+        glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular1);
+        glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess1);
+	    // Muka Atas	
+	    glNormal3f( 0.0f, 1.0f, 0.0f);		// Normal berarah atas
+	    glTexCoord2f(0.0f, 1.0f);
+	    glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 1 (atas)
+	    glTexCoord2f(0.0f, 0.0f);
+	    glVertex3f(-1.0f,  1.0f,  1.0f);	// Titik 2 (atas)
+	    glTexCoord2f(1.0f, 0.0f);
+	    glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (atas)
+	    glTexCoord2f(1.0f, 1.0f);
+	    glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 4 (atas)
+	    
+	    // Muka bawah
+	    glNormal3f( 0.0f,-1.0f, 0.0f);		// Normal berarah bawah
+	    glTexCoord2f(1.0f, 1.0f);
+	    glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (bawah)
+	    glTexCoord2f(0.0f, 1.0f);
+	    glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 2 (bawah)
+	    glTexCoord2f(0.0f, 0.0f);
+	    glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 3 (bawah)
+	    glTexCoord2f(1.0f, 0.0f);
+	    glVertex3f(-1.0f, -1.0f,  1.0f);	// Titik 4 (bawah)
+	
+		glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient2);
+        glMaterialfv(GL_FRONT, GL_DIFFUSE, bahan_diffuse2);
+        glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular2);
+        glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess2);
+    	// Muka kanan
+    	glNormal3f( 1.0f, 0.0f, 0.0f);		// Normal berarah ke kanan
+    	glTexCoord2f(1.0f, 0.0f);
+    	glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 1 (kanan)
+    	glTexCoord2f(1.0f, 1.0f);
+    	glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 2 (kanan)
+    	glTexCoord2f(0.0f, 1.0f);
+    	glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (kanan)
+    	glTexCoord2f(0.0f, 0.0f);
+        glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 4 (kanan)
+   	
+	    // Muka kiri
+	    glNormal3f(-1.0f, 0.0f, 0.0f);		// Normal berarah ke kiri
+	    glTexCoord2f(0.0f, 0.0f);
+	    glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (kiri)
+	    glTexCoord2f(1.0f, 0.0f);
+	    glVertex3f(-1.0f, -1.0f,  1.0f);	// Titik 2 (kiri)
+	    glTexCoord2f(1.0f, 1.0f);
+	    glVertex3f(-1.0f,  1.0f,  1.0f);	// Titik 3 (kiri)
+	    glTexCoord2f(0.0f, 1.0f);
+	    glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 4 (kiri)
+	
+	    glEnd();
+}
 //******************************************************
 // Awal kode yang diambil dari bukunya Suyoto
 void Inisialisasi(int lebar, int tinggi)
@@ -776,7 +869,7 @@ WinMain (HINSTANCE hInstance,
            		
         	glPushMatrix( );
                 
-                glTranslatef (0.0f, 3.5f, -14.99f);
+                glTranslatef (0.0f, 3.78f, -14.99f);
 				glScalef(0.7f, 0.7f, 0.f);
         		//glRotatef(180,1.0f,0.0f,0.0f);
                 //glRotatef(zrot,0.0f,0.0f,1.0f);
@@ -808,6 +901,197 @@ WinMain (HINSTANCE hInstance,
 				glRotatef (180.0f, 0.0f, 1.0f, 0.0f);
         		kubusAcTekstur();
         	glPopMatrix( );
+        	
+        	//Lemari
+        	glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient1);
+            glMaterialfv(GL_FRONT, GL_DIFFUSE,bahan_diffuse1);
+            glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular1);
+           	glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess1);
+           	glLightfv(GL_LIGHT0, GL_DIFFUSE, IntensitasCahaya0);
+           	glLightfv(GL_LIGHT0, GL_POSITION, PosisiCahaya2);
+        	glPushMatrix();	
+        		glTranslatef(-4.2f, -1.9f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-3.4f, -1.9f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-2.6f, -1.9f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-1.8f, -1.9f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-1.0f, -1.9f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-0.2f, -1.9f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(0.6f, -1.9f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(1.4f, -1.9f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(2.2f, -1.9f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(3.0f, -1.9f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	//atas
+        	glPushMatrix();	
+        		glTranslatef(-4.2f, -0.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-3.4f, -0.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-2.6f, -0.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-1.8f, -0.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-1.0f, -0.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-0.2f, -0.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(0.6f, -0.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(1.4f, -0.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(2.2f, -0.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(3.0f, -0.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	//atas lv2
+        	//atas
+        	glPushMatrix();	
+        		glTranslatef(-4.2f, 1.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-3.4f, 1.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-2.6f, 1.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-1.8f, 1.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-1.0f, 1.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(-0.2f, 1.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(0.6f, 1.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(1.4f, 1.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(2.2f, 1.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
+        	glPushMatrix();	
+        		glTranslatef(3.0f, 1.3f, -11.0f);
+        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+				glScalef(0.4f, 0.8f, 0.6f);
+        		lemari();
+        	glPopMatrix();
         	
         	xrot+=0.3f;   //Mengatur arah putaran object
 	        yrot+=0.2f;   //Mengatur arah putaran object
