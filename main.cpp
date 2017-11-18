@@ -564,13 +564,12 @@ void FotoKelompokKanan()
 {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture[7]); //menampilkan citra 
-	glBegin(GL_QUADS);
-	    // Muka belakang		
-        glNormal3f( 0.0f, 0.0f, 1.0f);		// Normal menuju Anda (berarah menuju ruangan)
-        glTexCoord2f(0.0f, 0.0f);	glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (belakang)
-        glTexCoord2f(0.0f, 1.0f);	glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 2 (belakang)
-        glTexCoord2f(1.0f, 1.0f);	glVertex3f(1.0f,  1.0f, -1.0f);		// Titik 3 (belakang)
-        glTexCoord2f(1.0f, 0.0f);	glVertex3f(1.0f, -1.0f, -1.0f);		// Titik 4 (belakang)
+	glBegin(GL_QUADS);        
+        glNormal3f( 1.0f, 0.0f, 0.0f);		// Normal berarah ke kanan
+    	glTexCoord2f(1.0f, 0.0f);	glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 1 (kanan)
+    	glTexCoord2f(1.0f, 1.0f);  	glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 2 (kanan)
+    	glTexCoord2f(0.0f, 1.0f);  	glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (kanan)
+    	glTexCoord2f(0.0f, 0.0f);   glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 4 (kanan)
    	glEnd();
    	glDisable(GL_TEXTURE_2D);
 }
@@ -700,7 +699,7 @@ WinMain (HINSTANCE hInstance,
         {
             /* OpenGL animation code goes here */
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            
+        
             //******************************************************
             // Awal kode yang diambil dari bukunya Suyoto
             //glColor3f (0, 0, 1);
@@ -776,7 +775,7 @@ WinMain (HINSTANCE hInstance,
         		       	
         		kubusNormal();
         	glPopMatrix();
-        	
+        	/*
         	
         	glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient3);
             glMaterialfv(GL_FRONT, GL_DIFFUSE,bahan_diffuse3);
@@ -791,7 +790,7 @@ WinMain (HINSTANCE hInstance,
 				glScalef(6.0f, 4.0f, 5.0f);
         		kubusRuangan();
         	glPopMatrix();
-        	
+        	*/
         	//JAM
         	glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient3);
             glMaterialfv(GL_FRONT, GL_DIFFUSE, bahan_diffuse3);
@@ -835,17 +834,25 @@ WinMain (HINSTANCE hInstance,
         		kubusAcTekstur();
         	glPopMatrix( );
         	
-        	//FOTO BELAKANG
+        	//FOTO KANAN
+        	glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient3);
+            glMaterialfv(GL_FRONT, GL_DIFFUSE,bahan_diffuse3);
+            glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular3);
+           	glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess3);
+           	glLightfv(GL_LIGHT0, GL_DIFFUSE, IntensitasCahaya0);
+           	glLightfv(GL_LIGHT0, GL_POSITION, PosisiCahaya2);
+           	
         	glPushMatrix();
-	        		glTranslated(0.0f, 0.0f, -10.0f);
-					glScalef(8.0f, 4.0f, 5.0f);
+	        		glTranslatef(0.0f, 0.5f, -11.0f);
+	        		glRotatef(0.0, 0.0f, 1.0f ,0.0f);
+					glScalef(6.0f, 4.0f, -4.0f);
 					FotoKelompokKanan();
 			glPopMatrix();
 				
         	xrot+=0.3f;   //Mengatur arah putaran object
 	        yrot+=0.2f;   //Mengatur arah putaran object
 	        zrot+=0.4f;   //Mengatur arah putaran object
-        
+        	
         	
             // Akhir kode yang diambil dari bukunya Suyoto
             //******************************************************
