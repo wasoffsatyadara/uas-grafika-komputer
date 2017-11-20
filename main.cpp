@@ -148,7 +148,7 @@ int LoadGLTextures()									// fungsi menampilkan gambar dan  Convert ke Textur
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 	}
 	
-	if (TextureImage[7]=LoadBMP("Kelompok.bmp"))  //pengambilan data gambar untuk dinding kiri
+	if (TextureImage[7]=LoadBMP("asset/dinding-3.bmp"))  //pengambilan data gambar untuk dinding kiri
 	{
 		Status=TRUE;									
 
@@ -157,6 +157,19 @@ int LoadGLTextures()									// fungsi menampilkan gambar dan  Convert ke Textur
 		// Typical Texture Generation Using Data From The Bitmap
 		glBindTexture(GL_TEXTURE_2D, texture[7]);
 		glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage[7]->sizeX, TextureImage[7]->sizeY, 0, GL_RGB, GL_UNSIGNED_BYTE, TextureImage[7]->data);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+	}
+	
+	if (TextureImage[8]=LoadBMP("Kelompok.bmp"))  //pengambilan data gambar untuk dinding kiri
+	{
+		Status=TRUE;									
+
+		glGenTextures(1, &texture[8]);					
+
+		// Typical Texture Generation Using Data From The Bitmap
+		glBindTexture(GL_TEXTURE_2D, texture[8]);
+		glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage[8]->sizeX, TextureImage[8]->sizeY, 0, GL_RGB, GL_UNSIGNED_BYTE, TextureImage[8]->data);
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 	}
@@ -647,7 +660,7 @@ void lemari()	{
 void kubusFiguraKananTekstur()
 {   	        
         glEnable(GL_TEXTURE_2D);
-        glBindTexture(GL_TEXTURE_2D, texture[7]); //menampilkan citra
+        glBindTexture(GL_TEXTURE_2D, texture[8]); //menampilkan citra
 		glBegin(GL_QUADS);
         // Muka kanan
     	glNormal3f( 1.0f, 0.0f, 0.0f);		// Normal berarah ke kanan
@@ -940,7 +953,7 @@ WinMain (HINSTANCE hInstance,
         		       	
         		kubusNormal();
         	glPopMatrix();
-        	/*
+        	
         	
         	glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient3);
             glMaterialfv(GL_FRONT, GL_DIFFUSE,bahan_diffuse3);
@@ -955,7 +968,7 @@ WinMain (HINSTANCE hInstance,
 				glScalef(6.0f, 4.0f, 5.0f);
         		kubusRuangan();
         	glPopMatrix();
-        	*/
+        	
         	//JAM
         	glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient3);
             glMaterialfv(GL_FRONT, GL_DIFFUSE, bahan_diffuse3);
