@@ -479,11 +479,93 @@ void kubusJamTekstur()
         // Akhir kode yang diambil dari bukunya Suyoto
         //******************************************************
 }
+
 void kubusAcTekstur()
 {   	
         glBindTexture(GL_TEXTURE_2D, texture[2]); //menampilkan citra
         glEnable(GL_TEXTURE_2D);
         glBegin(GL_QUADS);
+        // Muka kanan
+    	glNormal3f( 1.0f, 0.0f, 0.0f);		// Normal berarah ke kanan
+    	glTexCoord2f(1.0f, 0.0f);
+    	glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 1 (kanan)
+    	glTexCoord2f(1.0f, 1.0f);
+    	glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 2 (kanan)
+    	glTexCoord2f(0.0f, 1.0f);
+    	glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (kanan)
+    	glTexCoord2f(0.0f, 0.0f);
+        glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 4 (kanan)
+		glEnd();
+	    glDisable(GL_TEXTURE_2D);
+    	
+        glBegin(GL_QUADS);
+        
+        // Muka depan
+        glNormal3f( 0.0f, 0.0f, 1.0f);		// Normal menuju Anda
+        glTexCoord2f(0.0f, 0.0f); 
+        glVertex3f(-1.0f, -1.0f,  1.0f);	// Titik 1 (depan)
+        glTexCoord2f(1.0f, 0.0f); 
+        glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 2 (depan)
+        glTexCoord2f(1.0f, 1.0f);
+        glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (depan)
+        glTexCoord2f(0.0f, 1.0f);
+        glVertex3f(-1.0f,  1.0f,  1.0f);	// Titik 4 (depan)
+	    
+	
+        // Muka belakang		
+       	glNormal3f( 0.0f, 0.0f,-1.0f);		// Normal meninggalKan Anda
+       	glTexCoord2f(1.0f, 0.0f);
+       	glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (belakang)
+       	glTexCoord2f(1.0f, 1.0f);
+       	glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 2 (belakang)
+       	glTexCoord2f(0.0f, 1.0f);
+       	glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 3 (belakang)
+       	glTexCoord2f(0.0f, 0.0f);
+       	glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 4 (belakang)
+	
+	    // Muka Atas	
+	    glNormal3f( 0.0f, 1.0f, 0.0f);		// Normal berarah atas
+	    glTexCoord2f(0.0f, 1.0f);
+	    glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 1 (atas)
+	    glTexCoord2f(0.0f, 0.0f);
+	    glVertex3f(-1.0f,  1.0f,  1.0f);	// Titik 2 (atas)
+	    glTexCoord2f(1.0f, 0.0f);
+	    glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (atas)
+	    glTexCoord2f(1.0f, 1.0f);
+	    glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 4 (atas)
+	
+	    // Muka bawah
+	    glNormal3f( 0.0f,-1.0f, 0.0f);		// Normal berarah bawah
+	    glTexCoord2f(1.0f, 1.0f);
+	    glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (bawah)
+	    glTexCoord2f(0.0f, 1.0f);
+	    glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 2 (bawah)
+	    glTexCoord2f(0.0f, 0.0f);
+	    glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 3 (bawah)
+	    glTexCoord2f(1.0f, 0.0f);
+	    glVertex3f(-1.0f, -1.0f,  1.0f);	// Titik 4 (bawah)
+   	
+	    // Muka kiri
+	    glNormal3f(-1.0f, 0.0f, 0.0f);		// Normal berarah ke kiri
+	    glTexCoord2f(0.0f, 0.0f);
+	    glVertex3f(-1.0f, -1.0f, -1.0f);	// Titik 1 (kiri)
+	    glTexCoord2f(1.0f, 0.0f);
+	    glVertex3f(-1.0f, -1.0f,  1.0f);	// Titik 2 (kiri)
+	    glTexCoord2f(1.0f, 1.0f);
+	    glVertex3f(-1.0f,  1.0f,  1.0f);	// Titik 3 (kiri)
+	    glTexCoord2f(0.0f, 1.0f);
+	    glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 4 (kiri)
+	
+	    glEnd();
+        // Akhir kode yang diambil dari bukunya Suyoto
+        //******************************************************
+}
+
+void kubusFiguraKananTekstur()
+{   	        
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, texture[7]); //menampilkan citra
+		glBegin(GL_QUADS);
         // Muka kanan
     	glNormal3f( 1.0f, 0.0f, 0.0f);		// Normal berarah ke kanan
     	glTexCoord2f(1.0f, 0.0f);
@@ -834,7 +916,22 @@ WinMain (HINSTANCE hInstance,
         		kubusAcTekstur();
         	glPopMatrix( );
         	
-        	//FOTO KANAN
+        	//Foto Kanan
+        	glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient3);
+            glMaterialfv(GL_FRONT, GL_DIFFUSE,bahan_diffuse3);
+            glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular3);
+           	glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess3);
+           	glLightfv(GL_LIGHT0, GL_DIFFUSE, IntensitasCahaya0);
+           	glLightfv(GL_LIGHT0, GL_POSITION, PosisiCahaya1);
+        	glPushMatrix( );
+                glTranslatef (5.95f, 1.0f, -11.0f);
+				glScalef(0.05f, 1.0f, -2.0f);
+				glRotatef (180.0f, 0.0f, 1.0f, 0.0f);
+        		kubusFiguraKananTekstur();
+        	glPopMatrix( );
+        	
+			/*        	
+        	//Wallpaper KANAN
         	glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient3);
             glMaterialfv(GL_FRONT, GL_DIFFUSE,bahan_diffuse3);
             glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular3);
@@ -848,6 +945,7 @@ WinMain (HINSTANCE hInstance,
 					glScalef(6.0f, 4.0f, -4.0f);
 					FotoKelompokKanan();
 			glPopMatrix();
+			*/
 				
         	xrot+=0.3f;   //Mengatur arah putaran object
 	        yrot+=0.2f;   //Mengatur arah putaran object
