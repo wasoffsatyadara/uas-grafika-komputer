@@ -934,7 +934,7 @@ WinMain (HINSTANCE hInstance,
 
     /* create main window */
     hWnd = CreateWindow (
-      "TF-UAJY", "Teko, Torus, Bola dan Kubus dengan Citra [8240 & 8332]", 
+      "TF-UAJY", "UAS_8141_8193_8240_8332", 
       WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE,
       0, 0, 1024, 768,
       NULL, NULL, hInstance, NULL);
@@ -1073,7 +1073,7 @@ WinMain (HINSTANCE hInstance,
            		
         	glPushMatrix( );
                 
-                glTranslatef (0.0f, 3.78f, -14.99f);
+                glTranslatef (0.0f, 3.5f, -14.99f);
 				glScalef(0.7f, 0.7f, 0.f);
         		//glRotatef(180,1.0f,0.0f,0.0f);
                 //glRotatef(zrot,0.0f,0.0f,1.0f);

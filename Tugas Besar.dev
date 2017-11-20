@@ -1,6 +1,6 @@
 [Project]
 FileName=Tugas Besar.dev
-Name=JKWMantu_8240_8332
+Name=UAS_8141_8240_8332_8193
 UnitCount=1
 Type=0
 Ver=2
@@ -48,11 +48,11 @@ ProjectView=1
 Major=0
 Minor=1
 Release=1
-Build=485
+Build=489
 LanguageID=1033
 CharsetID=1252
 CompanyName=
-FileVersion=0.1.1.485
+FileVersion=0.1.1.489
 FileDescription=Developed using the Dev-C++ IDE
 InternalName=
 LegalCopyright=
