@@ -100,7 +100,7 @@ int LoadGLTextures()									// fungsi menampilkan gambar dan  Convert ke Textur
 	{
 		Status=TRUE;									
 
-		glGenTextures(1, &texture[2]);					
+		glGenTextures(1, &texture[3]);					
 
 		// Typical Texture Generation Using Data From The Bitmap
 		glBindTexture(GL_TEXTURE_2D, texture[3]);
@@ -234,32 +234,10 @@ void kubusNormal()	{
 }
 
 void kubusRuangan()	{
-	
-    // Untuk bahan objek kubus sisi belakang
-    GLfloat bahan_ambient0[]= {1.0f, 0.0f, 0.0f, 1.0f};
-	GLfloat bahan_diffuse0[] = {1.0f, 0.0f, 0.0f, 1.0f};
-	GLfloat bahan_specular0[] = {1.0f, 0.0f, 0.0f, 1.0f};
-	GLfloat bahan_shininess0[] = {10.0f};
-    // Untuk bahan objek kubus sisi kiri
-     GLfloat bahan_ambient1[]= {0.0f, 1.0f, 0.0f, 1.0f};
-	GLfloat bahan_diffuse1[] = {0.0f, 1.0f, 0.0f, 1.0f};
-	GLfloat bahan_specular1[] = {0.0f, 1.0f, 0.0f, 1.0f};
-	GLfloat bahan_shininess1[] = {10.0f};
-    // Untuk bahan objek kubus sisi kanan
-    GLfloat bahan_ambient2[]= {0.0f, 0.0f, 1.0f, 1.0f};
-	GLfloat bahan_diffuse2[] = {0.0f, 0.0f, 1.0f, 1.0f};
-	GLfloat bahan_specular2[] = {0.0f, 0.0f, 1.0f, 1.0f};
-	GLfloat bahan_shininess2[] = {10.0f};
-    // Untuk bahan objek kubus sisi atas
-    GLfloat bahan_ambient3[]= {1.0f, 1.0f, 1.0f, 1.0f};
-	GLfloat bahan_diffuse3[] = {1.0f, 1.0f, 1.0f, 1.0f};
-	GLfloat bahan_specular3[] = {1.0f, 1.0f, 1.0f, 1.0f};
-	GLfloat bahan_shininess3[] = {10.0f};
+	glBindTexture(GL_TEXTURE_2D, texture[4]); //menampilkan citra
+    glEnable(GL_TEXTURE_2D);
 	glBegin(GL_QUADS);        
-		glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient0);
-        glMaterialfv(GL_FRONT, GL_DIFFUSE, bahan_diffuse0);
-        glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular0);
-        glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess0);
+	
         // Muka belakang		
        	glNormal3f( 0.0f, 0.0f,-1.0f);		// Normal meninggalKan Anda
        	glTexCoord2f(1.0f, 0.0f);
@@ -270,11 +248,12 @@ void kubusRuangan()	{
        	glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 3 (belakang)
        	glTexCoord2f(0.0f, 0.0f);
        	glVertex3f( 1.0f, -1.0f, -1.0f);	// Titik 4 (belakang)
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
 	
-		glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient1);
-        glMaterialfv(GL_FRONT, GL_DIFFUSE, bahan_diffuse1);
-        glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular1);
-        glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess1);
+	glBindTexture(GL_TEXTURE_2D, texture[7]); //menampilkan citra
+    glEnable(GL_TEXTURE_2D);
+	glBegin(GL_QUADS);
 	    // Muka Atas	
 	    glNormal3f( 0.0f, 1.0f, 0.0f);		// Normal berarah atas
 	    glTexCoord2f(0.0f, 1.0f);
@@ -285,7 +264,12 @@ void kubusRuangan()	{
 	    glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (atas)
 	    glTexCoord2f(1.0f, 1.0f);
 	    glVertex3f( 1.0f,  1.0f, -1.0f);	// Titik 4 (atas)
-	    
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+	
+	glBindTexture(GL_TEXTURE_2D, texture[3]); //menampilkan citra
+    glEnable(GL_TEXTURE_2D);
+	glBegin(GL_QUADS);
 	    // Muka bawah
 	    glNormal3f( 0.0f,-1.0f, 0.0f);		// Normal berarah bawah
 	    glTexCoord2f(1.0f, 1.0f);
@@ -296,11 +280,12 @@ void kubusRuangan()	{
 	    glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 3 (bawah)
 	    glTexCoord2f(1.0f, 0.0f);
 	    glVertex3f(-1.0f, -1.0f,  1.0f);	// Titik 4 (bawah)
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
 	
-		glMaterialfv(GL_FRONT, GL_AMBIENT, bahan_ambient2);
-        glMaterialfv(GL_FRONT, GL_DIFFUSE, bahan_diffuse2);
-        glMaterialfv(GL_FRONT, GL_SPECULAR, bahan_specular2);
-        glMaterialfv(GL_FRONT, GL_SHININESS, bahan_shininess2);
+	glBindTexture(GL_TEXTURE_2D, texture[6]); //menampilkan citra
+    glEnable(GL_TEXTURE_2D);
+	glBegin(GL_QUADS);	
     	// Muka kanan
     	glNormal3f( 1.0f, 0.0f, 0.0f);		// Normal berarah ke kanan
     	glTexCoord2f(1.0f, 0.0f);
@@ -311,7 +296,12 @@ void kubusRuangan()	{
     	glVertex3f( 1.0f,  1.0f,  1.0f);	// Titik 3 (kanan)
     	glTexCoord2f(0.0f, 0.0f);
         glVertex3f( 1.0f, -1.0f,  1.0f);	// Titik 4 (kanan)
+    glEnd();
+	glDisable(GL_TEXTURE_2D);
    	
+   	glBindTexture(GL_TEXTURE_2D, texture[5]); //menampilkan citra
+    glEnable(GL_TEXTURE_2D);
+	glBegin(GL_QUADS);	
 	    // Muka kiri
 	    glNormal3f(-1.0f, 0.0f, 0.0f);		// Normal berarah ke kiri
 	    glTexCoord2f(0.0f, 0.0f);
@@ -322,8 +312,8 @@ void kubusRuangan()	{
 	    glVertex3f(-1.0f,  1.0f,  1.0f);	// Titik 3 (kiri)
 	    glTexCoord2f(0.0f, 1.0f);
 	    glVertex3f(-1.0f,  1.0f, -1.0f);	// Titik 4 (kiri)
-	
-	    glEnd();
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
 }
 
 void kubusTekstur()
